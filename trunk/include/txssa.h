@@ -94,7 +94,7 @@ C++ API does not need [d|s|z|c], and thus the name is like ssa_pat.
 
 Notes.
 - All APIs that return an int return 0 on success and non-zero on failure.
-- Use ssa_error_* APIs to get a error stack.
+- Use ssa_error_* APIs to get an error stack.
 - Input matrix is always column-oriented, as implied by the argument names
   col_values and col_leading_dim.
 - Output pattern and values are row-oriented.
