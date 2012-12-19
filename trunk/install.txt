@@ -1,0 +1,66 @@
+All platforms
+-------------
+
+TxSSA requires C and C++ compilers and it depends on BLAS and LAPACK
+libraries.  The build can be made by using CMake, or Visual Studio on
+Windows, or GNU Make wherever available.
+
+CMake
+-----
+
+A recent CMake version can be used to configure TxSSA for your platform.
+It has been tested with GCC 4.53, Visual Studio versions 2005 to 2012, and
+CMake versions 2.6.4 and 2.8.9.
+
+If BLAS_LAPACK_LIB_PATHS is defined for CMake, an attempt will be made to
+use all the given library paths.  If it is not specified, then CMake
+modules FindBLAS and FindLAPACK will be used instead.
+
+Shared libraries can be built if CMake variable BUILD_SHARED_LIBS is turned
+on.  Default build consists of static libraries.
+
+Example invocation on Windows with user-defined BLAS and LAPACK libraries:
+(concatenate lines before running)
+
+"C:\Program Files (x86)\CMake 2.8\bin\cmake.exe" 
+-G "Visual Studio 8 2005"
+-DBLAS_LAPACK_LIB_PATHS:FILEPATH="C:/Program Files (x86)/Intel/ComposerXE-2011/mkl/lib/ia32/mkl_intel_c.lib;C:/Program Files (x86)/Intel/ComposerXE-2011/mkl/lib/ia32/mkl_sequential.lib;C:/Program Files (x86)/Intel/ComposerXE-2011/mkl/lib/ia32/mkl_core.lib"
+C:\path\to\TxSSA
+
+Example invocation on Linux with user-defined BLAS and LAPACK libraries:
+
+cmake -DBLAS_LAPACK_LIB_PATHS:FILEPATH="/usr/lib64/libblas.so;/usr/lib64/liblapack.so" /path/to/TxSSA
+
+Visual Studio on Windows
+------------------------
+
+Windows users can use the Visual Studio projects in visual_studio
+directory.  Both win32 and x64 configurations are present.  The projects
+use Intel's MKL for BLAS and LAPACK libraries and assume that it is
+installed in "C:\Program Files (x86)\Intel\ComposerXE-2011\mkl".  This can
+be changed by user to another BLAS/LAPACK library or changed for a new
+location.  
+
+The preprocessor macro FORTRAN_SYMBOL_SCHEME is required for successfully
+compiling TxSSA.   Valid values for it are 1,2,3,4, and they correspond to
+different Fortran symbol conventions.  The correspondence is:
+1 => dpotrf_
+2 => dpotrf
+3 => DPOTRF
+4 => DPOTRF_
+
+FORTRAN_SYMBOL_SCHEME = 4 is used in the visual studio projects and it can
+be changed according to the convention used in your BLAS and LAPACK
+libraries.
+
+GNU Make
+--------
+
+Alternatively, the very simple makefile "makefile_GCC" can be used.  Please
+modify it for your specific use.  It uses the GCC compilers.  It also makes
+use of Intel MKL on Cygwin.  In non-Cygwin settings, it assumes that -lblas
+and -llapack arguments work while linking.  FORTRAN_SYMBOL_SCHEME = 1 in
+the makefile.  Just invoke "make -f makefile_GCC".  The targets are built
+in-place in top-level obj, lib, and bin directories.
+
+--------------------------------------------------------------------------

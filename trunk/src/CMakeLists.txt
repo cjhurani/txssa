@@ -1,0 +1,27 @@
+file(GLOB_RECURSE TXSSA_C     ${CMAKE_CURRENT_SOURCE_DIR}   "*.c")
+file(GLOB_RECURSE TXSSA_CPP   ${CMAKE_CURRENT_SOURCE_DIR}   "*.cpp")
+file(GLOB_RECURSE TXSSA_H     ${CMAKE_CURRENT_SOURCE_DIR}   "*.h")
+
+set(TXSSA_LIB_FILES "${TXSSA_C};${TXSSA_CPP};${TXSSA_H};../include/txssa.h")
+
+if(BUILD_SHARED_LIBS)
+    add_library(TxSSA SHARED ${TXSSA_LIB_FILES})
+    target_link_libraries(TxSSA ${BLAS_LAPACK_LIB_PATHS})
+    if(WIN32)
+        add_definitions(-DTXSSA_DLL_EXPORTS)
+    endif()
+else()
+    add_library(TxSSA STATIC ${TXSSA_LIB_FILES})
+endif()
+
+if(BUILD_SHARED_LIBS)
+    if(WIN32)
+        install(TARGETS TxSSA RUNTIME DESTINATION bin)
+        install(TARGETS TxSSA ARCHIVE DESTINATION lib)
+    else()
+        install(TARGETS TxSSA LIBRARY DESTINATION lib)
+    endif()
+else()
+    install(TARGETS TxSSA DESTINATION lib)
+endif()
+
