@@ -1,0 +1,5 @@
+2012-12-17  Chetan Jhurani  <jhurani@txcorp.com>
+
+	* Version 1.0 (interface version 1, implementation version 0) released.
+
+

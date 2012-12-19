@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{01124820-1a9f-43f5-a4d3-576eb7a8472d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{96418d6d-5af4-43a3-bbd0-19ff235fa60b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\blas">
+      <UniqueIdentifier>{1446bfc6-cbec-4c47-896b-3af2eb6a28a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\blas_wrap">
+      <UniqueIdentifier>{1883bf89-38e3-4511-9109-4d7c54309b6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\cpp">
+      <UniqueIdentifier>{ca87e873-d279-4f4b-b869-e61c2250eb2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\dense_algorithms">
+      <UniqueIdentifier>{9c350374-4c25-4b98-becf-5c0cfca18d4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\dense_matrix_pinv">
+      <UniqueIdentifier>{19781780-bb91-454e-94f7-43c302811e49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\dense_vectors">
+      <UniqueIdentifier>{6236fc91-5835-4c19-804f-b91b387cdca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\fortran">
+      <UniqueIdentifier>{9e3bcf9a-7e2a-49ee-b7d8-363782730b34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\internal_api_error">
+      <UniqueIdentifier>{40e62c01-3488-4847-9ac6-208f87fe954a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\lapack">
+      <UniqueIdentifier>{25847a3f-9711-4c14-91df-41ecf477c01c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\lapack_wrap">
+      <UniqueIdentifier>{8bb1a290-0e36-4c2f-bb46-16995493eb1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\math">
+      <UniqueIdentifier>{080019a2-e5ce-41a2-8967-1e6c96eeddc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\matrix_binning">
+      <UniqueIdentifier>{79aeba44-91dd-4d73-8935-3c30b2be5bcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\matrix_scaling">
+      <UniqueIdentifier>{22f35c21-4d64-4cea-b726-4fc55de00dbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\platform">
+      <UniqueIdentifier>{1ca3e0c4-ea14-48b2-89b3-14e396720db5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\p_norm_of_vectors">
+      <UniqueIdentifier>{b50f5ca1-e041-4c85-9988-e83c92759137}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\p_norm_sparsity_matrix">
+      <UniqueIdentifier>{20dfc5aa-d3b6-466f-a3c3-e786012e091a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\p_norm_sparsity_vectors">
+      <UniqueIdentifier>{9c94229e-664f-4025-9010-5272ecef2654}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sparse_algorithms">
+      <UniqueIdentifier>{84c325e8-e5fc-4587-8207-b7c4304397d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sparse_spectral_approximation">
+      <UniqueIdentifier>{f8d779bd-3c7b-4407-8a71-5be0d98e66a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sparse_vectors">
+      <UniqueIdentifier>{a90bc3a2-2a40-47a1-962f-e34c2d4ea00f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sparsity_union">
+      <UniqueIdentifier>{99e62942-2f31-460d-b86a-9745994d648c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\txssa.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\blas\blas_char_check.h">
+      <Filter>src\blas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\blas\blas_cpp_functions.h">
+      <Filter>src\blas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\blas\blas_functions.h">
+      <Filter>src\blas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\blas_wrap\dense_matrix_mult.h">
+      <Filter>src\blas_wrap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\blas_wrap\dense_matrix_tri_solve.h">
+      <Filter>src\blas_wrap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\blas_wrap\dense_vector_utils.h">
+      <Filter>src\blas_wrap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cpp\const_modifications.h">
+      <Filter>src\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cpp\std_extensions.h">
+      <Filter>src\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cpp\std_new_features.h">
+      <Filter>src\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cpp\std_utils.h">
+      <Filter>src\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cpp\vector_vector_id.h">
+      <Filter>src\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dense_algorithms\dense_matrix_permute.h">
+      <Filter>src\dense_algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dense_algorithms\dense_matrix_utils.h">
+      <Filter>src\dense_algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dense_matrix_pinv\dense_matrix_qr_pinv.h">
+      <Filter>src\dense_matrix_pinv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dense_vectors\dense_vectors.h">
+      <Filter>src\dense_vectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dense_vectors\dense_vectors_transpose_view.h">
+      <Filter>src\dense_vectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dense_vectors\dense_vectors_utils.h">
+      <Filter>src\dense_vectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\fortran\fort_wrap_cpp_func.h">
+      <Filter>src\fortran</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\fortran\fort_wrap_func.h">
+      <Filter>src\fortran</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\fortran\fort_wrap_func_def.h">
+      <Filter>src\fortran</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\internal_api_error\internal_api_error.h">
+      <Filter>src\internal_api_error</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\lapack\lapack_cpp_functions.h">
+      <Filter>src\lapack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\lapack\lapack_functions.h">
+      <Filter>src\lapack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\lapack_wrap\dense_matrix_linear_hpd.h">
+      <Filter>src\lapack_wrap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\lapack_wrap\dense_matrix_QR.h">
+      <Filter>src\lapack_wrap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\lapack_wrap\dense_matrix_reflectors_mult.h">
+      <Filter>src\lapack_wrap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\lapack_wrap\dense_matrix_reflectors_to_orth_col.h">
+      <Filter>src\lapack_wrap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\lapack_wrap\dense_matrix_tri_invert.h">
+      <Filter>src\lapack_wrap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\math\complex_types.h">
+      <Filter>src\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\math\precision_traits.h">
+      <Filter>src\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\math\vector_utils.h">
+      <Filter>src\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\matrix_binning\matrix_binning.h">
+      <Filter>src\matrix_binning</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\matrix_binning\split_pattern_to_bins.h">
+      <Filter>src\matrix_binning</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\matrix_scaling\p_normalize_dense_matrix.h">
+      <Filter>src\matrix_scaling</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\matrix_scaling\p_normalize_sparse_matrix.h">
+      <Filter>src\matrix_scaling</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\matrix_scaling\p_normalize_vectors_and_trans.h">
+      <Filter>src\matrix_scaling</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\matrix_scaling\scale_vectors_and_trans.h">
+      <Filter>src\matrix_scaling</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\platform\integral_type_range.h">
+      <Filter>src\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\p_norm_of_vectors\p_norm_of_vectors.h">
+      <Filter>src\p_norm_of_vectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\p_norm_of_vectors\p_norm_of_vectors_and_trans.h">
+      <Filter>src\p_norm_of_vectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\p_norm_sparsity_matrix\p_norm_sparsity_dense_matrix.h">
+      <Filter>src\p_norm_sparsity_matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\p_norm_sparsity_matrix\p_norm_sparsity_sparse_matrix.h">
+      <Filter>src\p_norm_sparsity_matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\p_norm_sparsity_vectors\p_norm_sparsity_dense_vectors.h">
+      <Filter>src\p_norm_sparsity_vectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\p_norm_sparsity_vectors\p_norm_sparsity_sparse_vectors.h">
+      <Filter>src\p_norm_sparsity_vectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\p_norm_sparsity_vectors\p_norm_sparsity_vector.h">
+      <Filter>src\p_norm_sparsity_vectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\p_norm_sparsity_vectors\p_norm_sparsity_vectors.h">
+      <Filter>src\p_norm_sparsity_vectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sparse_algorithms\sparse_matrix_mult.h">
+      <Filter>src\sparse_algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sparse_spectral_approximation\null_space_impose.h">
+      <Filter>src\sparse_spectral_approximation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sparse_spectral_approximation\sparse_spectral_binning.h">
+      <Filter>src\sparse_spectral_approximation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sparse_spectral_approximation\sparse_spectral_minimization.h">
+      <Filter>src\sparse_spectral_approximation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sparse_spectral_approximation\sparse_spectral_misfit_lhs.h">
+      <Filter>src\sparse_spectral_approximation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sparse_spectral_approximation\sparse_spectral_misfit_lhs_matrices.h">
+      <Filter>src\sparse_spectral_approximation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sparse_spectral_approximation\sparse_spectral_misfit_rhs.h">
+      <Filter>src\sparse_spectral_approximation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sparse_spectral_approximation\ssa_matrix_type.h">
+      <Filter>src\sparse_spectral_approximation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sparse_spectral_approximation\ssa_matrix_type_pinv_transpose.h">
+      <Filter>src\sparse_spectral_approximation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sparse_vectors\sparse_vectors.h">
+      <Filter>src\sparse_vectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sparse_vectors\sparse_vectors_transpose.h">
+      <Filter>src\sparse_vectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sparsity_union\sparse_vectors_union.h">
+      <Filter>src\sparsity_union</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sparsity_union\sparse_vectors_union_w_trans.h">
+      <Filter>src\sparsity_union</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\platform\cpu_timer.h">
+      <Filter>src\platform</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\blas\blas_char_check.c">
+      <Filter>src\blas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\blas\blas_functions.c">
+      <Filter>src\blas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\internal_api_error\internal_api_error.cpp">
+      <Filter>src\internal_api_error</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\lapack\lapack_functions.c">
+      <Filter>src\lapack</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\sparse_spectral_approximation\txssa.cpp">
+      <Filter>src\sparse_spectral_approximation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\sparse_spectral_approximation\ssa_matrix_type.cpp">
+      <Filter>src\sparse_spectral_approximation</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

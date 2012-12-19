@@ -1,0 +1,60 @@
+all: lib ssa_real_hermitian ssa_file_io_example
+
+CFLAGS = -Isrc -Iinclude -DFORTRAN_SYMBOL_SCHEME=1 -O2 -DNDEBUG -Wall -Wconversion -Wextra -ansi -pedantic -std=c89
+CPPFLAGS = -Isrc -Iinclude -O2 -DNDEBUG -Wall -Wconversion -Wextra -Wstrict-null-sentinel -Wno-non-template-friend -Wold-style-cast -Woverloaded-virtual -Wno-pmf-conversions -Wsign-promo -ansi -pedantic -Wno-long-long
+
+LIB_PATH = lib/libtxssa.a
+SRC = .
+OBJ = obj
+
+OBJ_LIST = \
+	$(OBJ)/blas/blas_char_check.c.o \
+	$(OBJ)/blas/blas_functions.c.o \
+	$(OBJ)/lapack/lapack_functions.c.o \
+	$(OBJ)/internal_api_error/internal_api_error.cpp.o \
+	$(OBJ)/sparse_spectral_approximation/txssa.cpp.o \
+	$(OBJ)/sparse_spectral_approximation/ssa_matrix_type.cpp.o
+
+OBJ_DIRS = $(OBJ) $(sort $(dir $(OBJ_LIST)))
+
+lib: $(LIB_PATH)
+
+$(LIB_PATH): $(OBJ_DIRS) $(OBJ_LIST)
+	@echo Creating $(LIB_PATH) && mkdir -p lib && ar cr $(LIB_PATH) $(OBJ_LIST) && ranlib $(LIB_PATH) 
+
+$(OBJ)/%.cpp.o: $(SRC)/src/%.cpp $(OBJ)
+	@echo Compiling $(<:obj%=src%) && g++ ${CPPFLAGS} -c -o $@ $(<:obj%=src%)
+
+$(OBJ)/%.c.o: $(SRC)/src/%.c $(OBJ)
+	@echo Compiling $(<:obj%=src%) && gcc ${CFLAGS} -c -o $@ $(<:obj%=src%)
+
+$(OBJ_DIRS):
+	@mkdir -p $@
+
+bin:
+	@mkdir -p bin
+
+UNAME = $(shell uname -o)
+
+ifeq ($(UNAME), Cygwin)
+    EXE = .exe
+    BL_DIR = "/cygdrive/C/Program Files (x86)/Intel/ComposerXE-2011/mkl/lib/ia32"
+    BLAS_LAPACK = $(BL_DIR)/mkl_intel_c.lib $(BL_DIR)/mkl_sequential.lib $(BL_DIR)/mkl_core.lib $(BL_DIR)/mkl_sequential.lib $(BL_DIR)/mkl_core.lib "/cygdrive/C/Program Files (x86)/Microsoft Visual Studio 8/VC/lib/chkstk.obj"
+else
+    EXE = 
+    BLAS_LAPACK = -llapack -lblas
+endif
+
+ssa_real_hermitian: lib bin bin/ssa_real_hermitian 
+
+bin/ssa_real_hermitian: examples/ssa_real_hermitian.c
+	@echo Linking bin/ssa_real_hermitian && gcc $(CFLAGS) examples/ssa_real_hermitian.c $(LIB_PATH) $(BLAS_LAPACK) -lstdc++ -o bin/ssa_real_hermitian
+
+ssa_file_io_example: lib bin bin/ssa_file_io_example
+
+bin/ssa_file_io_example: examples/ssa_file_io_example.cpp
+	@echo Linking bin/ssa_file_io_example && g++ $(CPPFLAGS) examples/ssa_file_io_example.cpp $(LIB_PATH) $(BLAS_LAPACK) -o bin/ssa_file_io_example
+
+clean:
+	rm -rf $(OBJ) lib bin/ssa_real_hermitian$(EXE) bin/ssa_file_io_example$(EXE)
+

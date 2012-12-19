@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{007D63A7-3293-4F2C-96D8-D73B1258D182}</ProjectGuid>
+    <RootNamespace>TxSSA</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.50727.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>dll/$(Configuration)\</OutDir>
+    <IntDir>dll/$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>dll\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>dll\$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>dll/$(Configuration)\</OutDir>
+    <IntDir>dll/$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>dll\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>dll\$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../include;../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;TXSSA_DLL_EXPORTS;FORTRAN_SYMBOL_SCHEME=4;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>mkl_intel_c.lib;mkl_sequential.lib;mkl_core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/Program Files (x86)/Intel/ComposerXE-2011/mkl/lib/ia32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>
+      </ImageHasSafeExceptionHandlers>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../include;../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;TXSSA_DLL_EXPORTS;FORTRAN_SYMBOL_SCHEME=4;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>mkl_intel_lp64.lib;mkl_sequential.lib;mkl_core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/Program Files (x86)/Intel/ComposerXE-2011/mkl/lib/intel64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>../../include;../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;TXSSA_DLL_EXPORTS;FORTRAN_SYMBOL_SCHEME=4;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>mkl_intel_c.lib;mkl_sequential.lib;mkl_core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/Program Files (x86)/Intel/ComposerXE-2011/mkl/lib/ia32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>
+      </ImageHasSafeExceptionHandlers>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>../../include;../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;TXSSA_DLL_EXPORTS;FORTRAN_SYMBOL_SCHEME=4;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>mkl_intel_lp64.lib;mkl_sequential.lib;mkl_core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/Program Files (x86)/Intel/ComposerXE-2011/mkl/lib/intel64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\txssa.h" />
+    <ClInclude Include="..\..\src\blas\blas_char_check.h" />
+    <ClInclude Include="..\..\src\blas\blas_cpp_functions.h" />
+    <ClInclude Include="..\..\src\blas\blas_functions.h" />
+    <ClInclude Include="..\..\src\blas_wrap\dense_matrix_mult.h" />
+    <ClInclude Include="..\..\src\blas_wrap\dense_matrix_tri_solve.h" />
+    <ClInclude Include="..\..\src\blas_wrap\dense_vector_utils.h" />
+    <ClInclude Include="..\..\src\cpp\const_modifications.h" />
+    <ClInclude Include="..\..\src\cpp\std_extensions.h" />
+    <ClInclude Include="..\..\src\cpp\std_new_features.h" />
+    <ClInclude Include="..\..\src\cpp\std_utils.h" />
+    <ClInclude Include="..\..\src\cpp\vector_vector_id.h" />
+    <ClInclude Include="..\..\src\dense_algorithms\dense_matrix_permute.h" />
+    <ClInclude Include="..\..\src\dense_algorithms\dense_matrix_utils.h" />
+    <ClInclude Include="..\..\src\dense_matrix_pinv\dense_matrix_qr_pinv.h" />
+    <ClInclude Include="..\..\src\dense_vectors\dense_vectors.h" />
+    <ClInclude Include="..\..\src\dense_vectors\dense_vectors_transpose_view.h" />
+    <ClInclude Include="..\..\src\dense_vectors\dense_vectors_utils.h" />
+    <ClInclude Include="..\..\src\fortran\fort_wrap_cpp_func.h" />
+    <ClInclude Include="..\..\src\fortran\fort_wrap_func.h" />
+    <ClInclude Include="..\..\src\fortran\fort_wrap_func_def.h" />
+    <ClInclude Include="..\..\src\internal_api_error\internal_api_error.h" />
+    <ClInclude Include="..\..\src\lapack\lapack_cpp_functions.h" />
+    <ClInclude Include="..\..\src\lapack\lapack_functions.h" />
+    <ClInclude Include="..\..\src\lapack_wrap\dense_matrix_linear_hpd.h" />
+    <ClInclude Include="..\..\src\lapack_wrap\dense_matrix_QR.h" />
+    <ClInclude Include="..\..\src\lapack_wrap\dense_matrix_reflectors_mult.h" />
+    <ClInclude Include="..\..\src\lapack_wrap\dense_matrix_reflectors_to_orth_col.h" />
+    <ClInclude Include="..\..\src\lapack_wrap\dense_matrix_tri_invert.h" />
+    <ClInclude Include="..\..\src\math\complex_types.h" />
+    <ClInclude Include="..\..\src\math\precision_traits.h" />
+    <ClInclude Include="..\..\src\math\vector_utils.h" />
+    <ClInclude Include="..\..\src\matrix_binning\matrix_binning.h" />
+    <ClInclude Include="..\..\src\matrix_binning\split_pattern_to_bins.h" />
+    <ClInclude Include="..\..\src\matrix_scaling\p_normalize_dense_matrix.h" />
+    <ClInclude Include="..\..\src\matrix_scaling\p_normalize_sparse_matrix.h" />
+    <ClInclude Include="..\..\src\matrix_scaling\p_normalize_vectors_and_trans.h" />
+    <ClInclude Include="..\..\src\matrix_scaling\scale_vectors_and_trans.h" />
+    <ClInclude Include="..\..\src\platform\cpu_timer.h" />
+    <ClInclude Include="..\..\src\platform\integral_type_range.h" />
+    <ClInclude Include="..\..\src\p_norm_of_vectors\p_norm_of_vectors.h" />
+    <ClInclude Include="..\..\src\p_norm_of_vectors\p_norm_of_vectors_and_trans.h" />
+    <ClInclude Include="..\..\src\p_norm_sparsity_matrix\p_norm_sparsity_dense_matrix.h" />
+    <ClInclude Include="..\..\src\p_norm_sparsity_matrix\p_norm_sparsity_sparse_matrix.h" />
+    <ClInclude Include="..\..\src\p_norm_sparsity_vectors\p_norm_sparsity_dense_vectors.h" />
+    <ClInclude Include="..\..\src\p_norm_sparsity_vectors\p_norm_sparsity_sparse_vectors.h" />
+    <ClInclude Include="..\..\src\p_norm_sparsity_vectors\p_norm_sparsity_vector.h" />
+    <ClInclude Include="..\..\src\p_norm_sparsity_vectors\p_norm_sparsity_vectors.h" />
+    <ClInclude Include="..\..\src\sparse_algorithms\sparse_matrix_mult.h" />
+    <ClInclude Include="..\..\src\sparse_spectral_approximation\null_space_impose.h" />
+    <ClInclude Include="..\..\src\sparse_spectral_approximation\sparse_spectral_binning.h" />
+    <ClInclude Include="..\..\src\sparse_spectral_approximation\sparse_spectral_minimization.h" />
+    <ClInclude Include="..\..\src\sparse_spectral_approximation\sparse_spectral_misfit_lhs.h" />
+    <ClInclude Include="..\..\src\sparse_spectral_approximation\sparse_spectral_misfit_lhs_matrices.h" />
+    <ClInclude Include="..\..\src\sparse_spectral_approximation\sparse_spectral_misfit_rhs.h" />
+    <ClInclude Include="..\..\src\sparse_spectral_approximation\ssa_matrix_type.h" />
+    <ClInclude Include="..\..\src\sparse_spectral_approximation\ssa_matrix_type_pinv_transpose.h" />
+    <ClInclude Include="..\..\src\sparse_vectors\sparse_vectors.h" />
+    <ClInclude Include="..\..\src\sparse_vectors\sparse_vectors_transpose.h" />
+    <ClInclude Include="..\..\src\sparsity_union\sparse_vectors_union.h" />
+    <ClInclude Include="..\..\src\sparsity_union\sparse_vectors_union_w_trans.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\blas\blas_char_check.c" />
+    <ClCompile Include="..\..\src\blas\blas_functions.c" />
+    <ClCompile Include="..\..\src\internal_api_error\internal_api_error.cpp" />
+    <ClCompile Include="..\..\src\lapack\lapack_functions.c" />
+    <ClCompile Include="..\..\src\sparse_spectral_approximation\txssa.cpp" />
+    <ClCompile Include="..\..\src\sparse_spectral_approximation\ssa_matrix_type.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
