@@ -101,62 +101,65 @@ bool sparse_vectors_union(
     try
     {
         std::vector< std::vector<index_type> > tmp_vecs_union(num_vecs);
-    
-        std::vector<index_type>
-            tmp_1(max_vec_size),
-            tmp_2(max_vec_size),
-            tmp_12(2 * size_type(max_vec_size));
 
-        index_type* vec_1_beg = &tmp_1.front();
-        index_type* vec_2_beg = &tmp_2.front();
+		if(max_vec_size > 0)
+		{
+			std::vector<index_type>
+				tmp_1(max_vec_size),
+				tmp_2(max_vec_size),
+				tmp_12(2 * size_type(max_vec_size));
 
-        for(index_type i = 0; i < num_vecs; ++i)
-        {
-            const index_type num_vec_entries_1 = vecs_1.num_vec_entries(i);
-            const index_type num_vec_entries_2 = vecs_2.num_vec_entries(i);
+			index_type* vec_1_beg = &tmp_1.front();
+			index_type* vec_2_beg = &tmp_2.front();
 
-            const index_type* vec_1 = vecs_1.vec_ids_begin(i);
-            const index_type* vec_2 = vecs_2.vec_ids_begin(i);
+			for(index_type i = 0; i < num_vecs; ++i)
+			{
+				const index_type num_vec_entries_1 = vecs_1.num_vec_entries(i);
+				const index_type num_vec_entries_2 = vecs_2.num_vec_entries(i);
 
-            assert(num_vec_entries_1 <= max_vec_size);
-            assert(num_vec_entries_2 <= max_vec_size);
-            assert(vec_1);
-            assert(vec_2);
+				const index_type* vec_1 = vecs_1.vec_ids_begin(i);
+				const index_type* vec_2 = vecs_2.vec_ids_begin(i);
 
-            const bool sorted_1 = std_new_features_is_sorted(
-                vec_1, vec_1 + num_vec_entries_1);
+				assert(num_vec_entries_1 <= max_vec_size);
+				assert(num_vec_entries_2 <= max_vec_size);
+				assert(vec_1);
+				assert(vec_2);
 
-            if(!sorted_1)
-            {
-                std::copy(vec_1, vec_1 + num_vec_entries_1, vec_1_beg);
-                std::sort(vec_1_beg, vec_1_beg + num_vec_entries_1);
-            }
+				const bool sorted_1 = std_new_features_is_sorted(
+					vec_1, vec_1 + num_vec_entries_1);
 
-            const index_type* vec_1_beg_const = sorted_1 ? vec_1 : vec_1_beg;
+				if(!sorted_1)
+				{
+					std::copy(vec_1, vec_1 + num_vec_entries_1, vec_1_beg);
+					std::sort(vec_1_beg, vec_1_beg + num_vec_entries_1);
+				}
 
-            const bool sorted_2 = std_new_features_is_sorted(
-                vec_2, vec_2 + num_vec_entries_2);
+				const index_type* vec_1_beg_const = sorted_1 ? vec_1 : vec_1_beg;
 
-            if(!sorted_2)
-            {
-                std::copy(vec_2, vec_2 + num_vec_entries_2, vec_2_beg);
-                std::sort(vec_2_beg, vec_2_beg + num_vec_entries_2);
-            }
+				const bool sorted_2 = std_new_features_is_sorted(
+					vec_2, vec_2 + num_vec_entries_2);
 
-            const index_type* vec_2_beg_const = sorted_2 ? vec_2 : vec_2_beg;
+				if(!sorted_2)
+				{
+					std::copy(vec_2, vec_2 + num_vec_entries_2, vec_2_beg);
+					std::sort(vec_2_beg, vec_2_beg + num_vec_entries_2);
+				}
 
-            const size_type union_size =
-                std::set_union(
-                    vec_1_beg_const, vec_1_beg_const + num_vec_entries_1,
-                    vec_2_beg_const, vec_2_beg_const + num_vec_entries_2,
-                    tmp_12.begin()) -
-                    tmp_12.begin();
+				const index_type* vec_2_beg_const = sorted_2 ? vec_2 : vec_2_beg;
 
-            tmp_vecs_union[i].resize(union_size); // Could throw
+				const size_type union_size =
+					std::set_union(
+						vec_1_beg_const, vec_1_beg_const + num_vec_entries_1,
+						vec_2_beg_const, vec_2_beg_const + num_vec_entries_2,
+						tmp_12.begin()) -
+						tmp_12.begin();
 
-            std::copy(tmp_12.begin(), tmp_12.begin() + union_size,
-                tmp_vecs_union[i].begin());
-        }
+				tmp_vecs_union[i].resize(union_size); // Could throw
+
+				std::copy(tmp_12.begin(), tmp_12.begin() + union_size,
+					tmp_vecs_union[i].begin());
+			}
+		}
 
         vecs_union.swap(tmp_vecs_union);
 

@@ -205,7 +205,7 @@ public:
         // assert(in_ids); // in_ids can be 0, so don't assert.
         assert(std_new_features_is_sorted(in_offsets, in_offsets + std::size_t(in_n_vecs) + 1));
 
-        if(in_ids)
+        if(in_ids && in_max_vec_size > 0)
         {
             assert(std::find_if(
                 in_ids,
@@ -361,11 +361,12 @@ public:
             return false;
         }
 
-        success = std::find_if(
-            size_per_vec,
-            size_per_vec + in_n_vecs,
-            std_utils_not_in_range_closed<index_type>(0, in_max_vec_size)) ==
-            size_per_vec + in_n_vecs;
+		if(in_max_vec_size > 0)
+			success = std::find_if(
+				size_per_vec,
+				size_per_vec + in_n_vecs,
+				std_utils_not_in_range_closed<index_type>(0, in_max_vec_size)) ==
+				size_per_vec + in_n_vecs;
 
         if(!success)
         {

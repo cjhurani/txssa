@@ -94,7 +94,7 @@ bool sparse_spectral_binning_row(
         num_rows <= A_col_leading_dim &&
         row_offsets &&
         column_ids &&
-        row_bin_ids;
+        (row_bin_ids || !num_rows);
 
     if(!success)
     {

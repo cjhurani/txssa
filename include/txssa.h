@@ -153,10 +153,12 @@ Notes.
    the library interface and/or implementation.
 */
 
-/* Header version (intf = interface). */
-const unsigned int ssa_intf_version = 1;
+/* Header version (intf = interface).  A preprocessor constant so compile-time
+   decisions can be made. */
+#define ssa_intf_version 1
 
-/* Source version (impl = implementation). */
+/* Source version (impl = implementation).  A language variable so run-time
+   decisions can be made.  No need to be preprocessor constant.  */
 TXSSA_API extern const unsigned int ssa_impl_version;
 
 /* -------------------------------------------------------------------------- */

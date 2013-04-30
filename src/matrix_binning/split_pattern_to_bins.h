@@ -78,7 +78,7 @@ bool split_pattern_to_bins(
 {
     bool success =
         offsets &&
-        values &&
+        ((!n_vecs || !max_vec_size) || values) &&
         split;
 
     if(!success)

@@ -102,7 +102,7 @@ bool sparse_spectral_minimization(
     value_type* out_row_values,  // Size row_offsets[num_rows]
     value_type mult_factor)
 {
-    bool success = out_row_values && row_bin_values;
+    bool success = out_row_values && (!num_rows || row_bin_values);
 
     if(!success)
     {

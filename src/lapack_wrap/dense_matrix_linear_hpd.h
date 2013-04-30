@@ -97,15 +97,18 @@ bool dense_matrix_linear_hpd_solve(
         LAPACK_int LAPACK_lda  = LAPACK_int(A_col_leading_dim);
         LAPACK_int LAPACK_ldb  = LAPACK_int(B_col_leading_dim);
 
-        int info = 0;
-        LAPACK_posv(
-            &uplo, &LAPACK_n, &LAPACK_nrhs,
-            A_col_values, &LAPACK_lda,
-            B_col_values, &LAPACK_ldb,
-            &info);
+		if(LAPACK_n)
+		{
+			int info = 0;
+			LAPACK_posv(
+				&uplo, &LAPACK_n, &LAPACK_nrhs,
+				A_col_values, &LAPACK_lda,
+				B_col_values, &LAPACK_ldb,
+				&info);
 
-        success = (info == 0);
-        assert(success);
+			success = (info == 0);
+			assert(success);
+		}
     }
 
     if(!success)

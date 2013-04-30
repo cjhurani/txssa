@@ -193,7 +193,7 @@ bool matrix_binning(
     const index_type num_vecs = vecs.num_vecs();
 
     bool success =
-        bin_ids &&
+        (bin_ids || !sparse_pat.num_entries()) &&
         (num_vecs == sparse_pat.num_vecs()) &&
         (work_array || max_num_bins <= 1);
 
