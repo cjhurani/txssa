@@ -13,7 +13,6 @@ execute_process(COMMAND ${GREP_PROGRAM} " ssa_intf_version" txssa.h
                 OUTPUT_VARIABLE intf_version 
                 OUTPUT_STRIP_TRAILING_WHITESPACE)
 
-string(REGEX REPLACE ";" "" intf_version ${intf_version})
 string(REGEX REPLACE ".* " "" intf_version ${intf_version})
 
 execute_process(COMMAND ${GREP_PROGRAM} " ssa_impl_version" txssa.cpp
@@ -92,6 +91,7 @@ endif()
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 
+add_subdirectory(doc)
 add_subdirectory(src)
 add_subdirectory(test)
 add_subdirectory(examples)

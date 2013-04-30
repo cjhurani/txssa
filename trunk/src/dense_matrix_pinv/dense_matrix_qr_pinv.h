@@ -137,7 +137,7 @@ bool dense_matrix_qr_pinv_horzcat_U_fullrank_B_flat(
                 CC_uplo, 'N',
                 num_rows, B_num_cols, value_type(1),
                 inv_U_B_col_values, inv_U_B_col_leading_dim, value_type(0),
-                work, num_rows)
+                work, std::max(index_type(1), num_rows))
             &&
             // Add identity to work.
             dense_matrix_utils_diagonal_add(

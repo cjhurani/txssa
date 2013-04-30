@@ -158,61 +158,64 @@ bool sparse_vectors_transpose_ids(
 
     out_collection_type tmp_trans_vecs;
 
-    try
-    {
-        transpose_nnz.resize(max_vec_size);
+	if(max_vec_size > 0)
+	{
+		try
+		{
+			transpose_nnz.resize(max_vec_size);
 
-        sparse_vectors_transpose_nnz_add(
-            num_vecs, vecs, transpose_nnz.begin());
+			sparse_vectors_transpose_nnz_add(
+				num_vecs, vecs, transpose_nnz.begin());
 
-        bool success =
-            tmp_trans_vecs.allocate(max_vec_size, num_vecs, &transpose_nnz.front());
+			bool success =
+				tmp_trans_vecs.allocate(max_vec_size, num_vecs, max_vec_size ? &transpose_nnz.front() : 0);
 
-        if(!success)
-        {
-            assert(false);
+			if(!success)
+			{
+				assert(false);
 
-            internal_api_error_set_last(
-                "sparse_vectors_transpose_ids: Allocation error.");
+				internal_api_error_set_last(
+					"sparse_vectors_transpose_ids: Allocation error.");
 
-            return false;
-        }
-    }
-    catch(const std::exception& exc)
-    {
-        assert(false);
+				return false;
+			}
+		}
+		catch(const std::exception& exc)
+		{
+			assert(false);
 
-        internal_api_error_set_last(
-            (std::string("sparse_vectors_transpose_ids: Exception. ") + exc.what()));
+			internal_api_error_set_last(
+				(std::string("sparse_vectors_transpose_ids: Exception. ") + exc.what()));
 
-        return false;
-    }
+			return false;
+		}
 
-    // Reuse space.  "Rename" first.
-    std::vector<index_type>& ids_done = transpose_nnz;
-    std::fill(ids_done.begin(), ids_done.end(), index_type(0));
+		// Reuse space.  "Rename" first.
+		std::vector<index_type>& ids_done = transpose_nnz;
+		std::fill(ids_done.begin(), ids_done.end(), index_type(0));
 
-    for(index_type i = 0; i < num_vecs; ++i)
-    {
-        const index_type num_vec_entries = vecs.num_vec_entries(i);
-        const index_type* ids = vecs.vec_ids_begin(i);
-        assert(num_vec_entries <= max_vec_size);
-        assert(ids);
+		for(index_type i = 0; i < num_vecs; ++i)
+		{
+			const index_type num_vec_entries = vecs.num_vec_entries(i);
+			const index_type* ids = vecs.vec_ids_begin(i);
+			assert(num_vec_entries <= max_vec_size);
+			assert(ids);
 
-        for(index_type j = 0; j < num_vec_entries; ++j)
-        {
-            const index_type id_mapped = ids[j];
+			for(index_type j = 0; j < num_vec_entries; ++j)
+			{
+				const index_type id_mapped = ids[j];
 
-            // Now we cannot put "i" in tmp_trans_vecs. This is because "i" is
-            // component id and not necessarily derived from trans_ids_vecs.
-            // Find i in id_mapped vector of trans_ids_vecs and use that.
+				// Now we cannot put "i" in tmp_trans_vecs. This is because "i" is
+				// component id and not necessarily derived from trans_ids_vecs.
+				// Find i in id_mapped vector of trans_ids_vecs and use that.
 
-            const index_type i_off = trans_ids_vecs.inv_id_func(id_mapped)(i);
+				const index_type i_off = trans_ids_vecs.inv_id_func(id_mapped)(i);
 
-            tmp_trans_vecs.vec_ids_begin(id_mapped)[ids_done[id_mapped]++] =
-                i_off;
-        }
-    }
+				tmp_trans_vecs.vec_ids_begin(id_mapped)[ids_done[id_mapped]++] =
+					i_off;
+			}
+		}
+	}
 
     trans_vecs.swap(tmp_trans_vecs);
 

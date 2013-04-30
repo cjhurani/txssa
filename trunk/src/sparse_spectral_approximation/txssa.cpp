@@ -312,7 +312,15 @@ bool ssa_lpn_internal(
                 return false;
             }
 
-            success = out_mat_ptr->allocate(num_rows, num_cols, &size_per_row.front());
+			if(num_rows > 0)
+			{
+				success = out_mat_ptr->allocate(num_rows, num_cols, &size_per_row.front());
+			}
+			else
+			{
+				index_type tmp_size_per_row = 0;
+				success = out_mat_ptr->allocate(num_rows, num_cols, &tmp_size_per_row);
+			}
 
             if(success)
             {
@@ -1125,6 +1133,13 @@ int ssa_d_lpn(
 {
     ssa_csr<int, int, double>* csr = new (std::nothrow) ssa_csr<int, int, double>;
 
+    if(!csr)
+    {
+        assert(false);
+        internal_api_error_set_last("ssa_d_lpn: Memory allocation failed.");
+        return 1;
+    }
+
     int ret = ssa_lpn(
         num_rows, num_cols,
         col_values, col_leading_dim,
@@ -1155,6 +1170,13 @@ int ssa_d_ids(
     struct ssa_d_csr*    out_matrix)
 {
     ssa_csr<int, int, double>* csr = new (std::nothrow) ssa_csr<int, int, double>;
+
+    if(!csr)
+    {
+        assert(false);
+        internal_api_error_set_last("ssa_d_ids: Memory allocation failed.");
+        return 1;
+    }
 
     int ret = ssa_ids(
         num_rows, num_cols,
@@ -1212,6 +1234,13 @@ int ssa_s_lpn(
 {
     ssa_csr<int, int, float>* csr = new (std::nothrow) ssa_csr<int, int, float>;
 
+    if(!csr)
+    {
+        assert(false);
+        internal_api_error_set_last("ssa_s_lpn: Memory allocation failed.");
+        return 1;
+    }
+
     int ret = ssa_lpn(
         num_rows, num_cols,
         col_values, col_leading_dim,
@@ -1242,6 +1271,13 @@ int ssa_s_ids(
     struct ssa_s_csr*    out_matrix)
 {
     ssa_csr<int, int, float>* csr = new (std::nothrow) ssa_csr<int, int, float>;
+
+    if(!csr)
+    {
+        assert(false);
+        internal_api_error_set_last("ssa_s_ids: Memory allocation failed.");
+        return 1;
+    }
 
     int ret = ssa_ids(
         num_rows, num_cols,
@@ -1299,6 +1335,13 @@ int ssa_z_lpn(
 {
     ssa_csr<int, int, std::complex<double> >* csr = new (std::nothrow) ssa_csr<int, int, std::complex<double> >;
 
+    if(!csr)
+    {
+        assert(false);
+        internal_api_error_set_last("ssa_z_lpn: Memory allocation failed.");
+        return 1;
+    }
+
     int ret = ssa_lpn(
         num_rows, num_cols,
         reinterpret_cast<const std::complex<double>*>(col_values), col_leading_dim,
@@ -1329,6 +1372,13 @@ int ssa_z_ids(
     struct ssa_z_csr*    out_matrix)
 {
     ssa_csr<int, int, std::complex<double> >* csr = new (std::nothrow) ssa_csr<int, int, std::complex<double> >;
+
+    if(!csr)
+    {
+        assert(false);
+        internal_api_error_set_last("ssa_z_ids: Memory allocation failed.");
+        return 1;
+    }
 
     int ret = ssa_ids(
         num_rows, num_cols,
@@ -1386,6 +1436,13 @@ int ssa_c_lpn(
 {
     ssa_csr<int, int, std::complex<float> >* csr = new (std::nothrow) ssa_csr<int, int, std::complex<float> >;
 
+    if(!csr)
+    {
+        assert(false);
+        internal_api_error_set_last("ssa_c_lpn: Memory allocation failed.");
+        return 1;
+    }
+
     int ret = ssa_lpn(
         num_rows, num_cols,
         reinterpret_cast<const std::complex<float>*>(col_values), col_leading_dim,
@@ -1416,6 +1473,13 @@ int ssa_c_ids(
     struct ssa_c_csr*    out_matrix)
 {
     ssa_csr<int, int, std::complex<float> >* csr = new (std::nothrow) ssa_csr<int, int, std::complex<float> >;
+
+    if(!csr)
+    {
+        assert(false);
+        internal_api_error_set_last("ssa_c_ids: Memory allocation failed.");
+        return 1;
+    }
 
     int ret = ssa_ids(
         num_rows, num_cols,
