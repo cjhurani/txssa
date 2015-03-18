@@ -1,3 +1,5 @@
+Repository migrated from https://code.google.com/p/txssa
+
 TxSSA stands for Tech-X Corporation Sparse Spectral Approximation.
 
 The library TxSSA, which has interfaces in C++, C, and MATLAB, is an
